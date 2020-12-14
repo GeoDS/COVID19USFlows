@@ -36,6 +36,8 @@ else:
 
 # Download files of one day
 def download_file(scale, month, day, output_folder):
+    if os.path.exists(f"{output_folder}/") == False:
+        os.mkdir(f"{output_folder}/")
     if os.path.exists(f"{output_folder}/{scale}/") == False:
         os.mkdir(f"{output_folder}/{scale}/")
     if scale == "ct2ct":
