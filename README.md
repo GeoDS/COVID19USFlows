@@ -25,9 +25,9 @@
 * [Citation](#citation)
 * [About the Project](#about-the-project)
 * [Data Processing and Data Descriptor](#data-processing-and-data-descriptor)
+* [How to Download Data?](#code-usage)
 * [Field Descriptions](#field-descriptions)
 * [Folder Structure](#folder-structure)
-* [How to Download Data?](#code-usage)
 * [License](#license)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
@@ -99,13 +99,123 @@ Temporal patterns of mobility flows in five metropolitan areas (just as examples
 
 A full description of the methodology used for this study can be found here: [https://arxiv.org/abs/2008.12238](https://arxiv.org/abs/2008.12238).
 
+<!--code usage-->
+## Code Usage
+**How to Download Data?**
+We provide a set of tools for downloading data.  
+
+#### Command Line
+If you are Linux/Mac users, you can use **wget/curl** to download data files.
+```
+wget https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/{data_type}_flows/{spatial_scale}/{data_type}_{spatial_scale}_{date}.csv
+```
+
+```
+curl https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/{data_type}_flows/{spatial_scale}/{data_type}_{spatial_scale}_{date}.csv --output output_file.csv
+```
+
+Example:  
+Download daily county level data of March 1st, 2020 using **wget**.
+```
+wget https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/daily_flows/county2county/daily_county2county_2020_03_01.csv
+```
+
+You can also use the following python codes to download daily patterns and weekly patterns.
+
+#### Download Daily Patterns
+To download daily patterns at different spatial scales, you can use <em>[codes/download_daily_data.py](https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/codes/download_daily_data.py)</em> with the specified date range.  
+Usage:
+    
+```
+    python download_daily_data.py --start_year [start_year] --start_month [start_month] --start_day [start_day] --end_year [end_year] --end_month [end_month] --end_day [end_day] --output_folder [output_folder] --ct --county --state
+```
+
+```
+--start_year (required parameter), year of the start date
+--start_month (required parameter), month of the start date
+--start_day (required parameter), day of the start date
+--end_year  month of the end date, default is the start_year
+--end_month  month of the end date, default is the start_month
+--end_day    day of the start date, default is the start_day
+--output_folder (required), output folder
+--ct download data at the census tract level
+--county download data at the county level
+--state download data at the state level
+```
+
+Example:  
+Download county level data of March 1st, 2020 to the <em>daily_flows</em> folder.
+```
+    python download_daily_data.py --start_year 2020 --start_month 3 --start_day 1 --output_folder daily_flows  --county 
+```
+
+Download state level and census tract level data from March 1st to March 10th, 2020 to the <em>daily_flows</em> folder.
+```
+    python download_daily_data.py --start_year 2020 --start_month 3 --start_day 1 --end_month 3 --end_day 10 --output_folder daily_flows --state --ct
+```
+
+#### Download Weekly Patterns
+To download weekly patterns at different spatial scales, you can use <em>[codes/download_weekly_data.py](https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/codes/download_weekly_data.py)</em> with the specified data range.  
+**Please note that the start date and the end date must be Monday.**  
+Usage:
+    
+```
+    python download_weekly_data.py --start_year [start_year] --start_month [start_month] --start_day [start_day] --end_year [end_year] --end_month [end_month] --end_day [end_day] --output_folder [output_folder] --ct --county --state
+```
+
+```
+--start_year (required parameter), year of the start date (must be a Monday)
+--start_month (required parameter), month of the start date (must be a Monday)
+--start_day (required parameter), day of the start date (must be a Monday)
+--end_year  year of the end date (must be a Monday), default is the start_year
+--end_month  month of the end date (must be a Monday), default is the start_month
+--end_day    day of the start date (must be a Monday), default is the end_day
+--output_folder (required parameter), output folder
+--ct download data at the census tract level
+--county download data at the county level
+--state download data at the state level
+```
+
+Example:  
+Download county level data of the week of March 2nd-8th, 2020 to the <em>weekly_flows</em> folder.
+```
+    python download_weekly_data.py --start_year 2020 --start_month 3 --start_day 2 --output_folder weekly_flows  --county 
+```
+
+Download state level and census tract level data from the week of March 2st-8th, 2020 to the week of March 23th-29th to the <em>weekly_flows</em> folder.
+```
+    python download_weekly_data.py --start_year 2020 --start_month 3 --start_day 2 --end_month 3 --end_day 23 --output_folder weekly_flows --state --ct
+```
+
+
+#### Combine Files
+Please note that at census tract level, since file sizes are larger than 100 MB, we split them into 52 files based on each state, e.g. <em>weekly_ct2ct_2020_03_02_01.csv</em> represents all flows from census tract to census tract at the state Alabama.
+To merge them together conveniently, we provide <em>[codes/merge_files.py](https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/codes/merge_files.py)</em> to combine all files under one folder together.  
+Usage:   
+    
+```
+    python merge_files.py -i [input_folder] -o [output_file_path]
+```
+    
+```
+-i input folder path  
+-o output file path  
+```
+
+Example:  
+Combine all census tract files under the folder <em>../weekly_flows/ct2ct/2020_04_06</em> to a single file <em>weekly_ct2ct_2020_04_06.csv</em>
+    
+```
+    python merge_files.py -i ../weekly_flows/ct2ct/2020_04_06/ -o weekly_ct2ct_2020_04_06.csv
+```
+
 ## Folder Structure
 Data provided in this repository are separated into two folders <em>daily_flows</em> and <em>weekly_flows</em> to store daily flow data and weekly flow data.
 The two folders are organized according to the geographic scale, where <em>ct2ct</em> indicates flows between census tract to census tract, <em>county2county</em> refers to flows between county to county, and <em>state2state</em> contains flow data originate from one state to others.
 All files are stored in a csv format, which has been widely used for storing, transferring, and sharing data in the field of data science.
-File names are formatted as <em>{data_type} \_ {spatial_scale}\_ {date}.csv</em>, e.g. <em>weekly_ct2ct_03_02.csv</em> and <em>daily_state2state_04_19.csv</em>.
+File names are formatted as <em>{data_type} \_ {spatial_scale}\_ {date}.csv</em>, e.g. <em>weekly_county2county_2020_03_02.csv</em> and <em>daily_state2state_2020_04_19.csv</em>.
 Specifically, for weekly flow data, the dates in file name refers to the date of the Monday in that week but summarize all mobility flows in that week from Monday to Sunday.
-Since the file size of flow data at census tract level exceeds the GitHub disk limit, each flow data file is split into 20 files.
+Since the file size of flow data at census tract level exceeds the GitHub disk limit, each flow data file is split into 52 files based on GEOIDs of states, e.g. <em>weekly_ct2ct_2020_03_02_01.csv</em> represents all flows from census tract to census tract at the state Alabama.
 
 
 The folders and files are organized as follows.   
@@ -114,40 +224,40 @@ project
 |-- codes
 |-- daily_flows
 |   |-- state2state
-|   |   |-- daily_state2state_03_01.csv
-|   |   |-- daily_state2state_03_02.csv
+|   |   |-- daily_state2state_2020_03_01.csv
+|   |   |-- daily_state2state_2020_03_02.csv
 |   |   `-- ...
 |   |-- county2county
-|   |   |-- daily_county2county_03_01.csv
-|   |   |-- daily_county2county_03_02.csv
+|   |   |-- daily_county2county_2020_03_01.csv
+|   |   |-- daily_county2county_2020_03_02.csv
 |   |   `-- ...
 |   `-- ct2ct
-|       |-- 03_01
-|       |   |-- daily_ct2ct_03_01_0.csv
-|       |   |-- daily_ct2ct_03_01_1.csv
+|       |-- 2020_03_01
+|       |   |-- daily_ct2ct_2020_03_01_01.csv
+|       |   |-- daily_ct2ct_2020_03_01_02.csv
 |       |   `-- ...
-|       |-- 03_02
-|       |   |-- daily_ct2ct_03_02_0.csv
-|       |   |-- daily_ct2ct_03_02_1.csv
+|       |-- 2020_03_02
+|       |   |-- daily_ct2ct_2020_03_02_01.csv
+|       |   |-- daily_ct2ct_2020_03_02_02.csv
 |       |   `-- ...
 |       `-- ...
 `-- weekly_flows
     |-- state2state
-    |   |-- weekly_state2state_03_02.csv
-    |   |-- weekly_state2state_03_09.csv
+    |   |-- weekly_state2state_2020_03_02.csv
+    |   |-- weekly_state2state_2020_03_09.csv
     |   `-- ...
     |-- county2county
-    |   |-- weekly_county2county_03_02.csv
-    |   |-- weekly_county2county_03_09.csv
+    |   |-- weekly_county2county_2020_03_02.csv
+    |   |-- weekly_county2county_2020_03_09.csv
     |   `-- ...
     `-- ct2ct
-        |-- 03_02
-        |   |-- weekly_ct2ct_03_02_0.csv
-        |   |-- weekly_ct2ct_03_02_1.csv
+        |-- 2020_03_02
+        |   |-- weekly_ct2ct_2020_03_02_01.csv
+        |   |-- weekly_ct2ct_2020_03_02_02.csv
         |   `-- ...
-        |-- 03_09
-        |   |-- weekly_ct2ct_03_09_0.csv
-        |   |-- weekly_ct2ct_03_09_1.csv
+        |-- 2020_03_09
+        |   |-- weekly_ct2ct_2020_03_09_01.csv
+        |   |-- weekly_ct2ct_2020_03_09_02.csv
         |   `-- ...
         `-- ...
 ```
@@ -176,111 +286,6 @@ lng\_d - Longitude of the geometric centroid of the destination unit. Type: floa
 date - Date of the records. Type: string.  
 visitor\_flows - Estimated number of visitors between the two geographic units (from geoid\_o to geoid\_d). Type: float.  
 pop\_flows - Estimated population flows between the two geographic units (from geoid\_o to geoid\_d), inferred from visitor\_flows. Type: float.  
-
-## Code Usage
-**How to Download Data?**
-We provide a set of tools for downloading data.  
-
-#### Command Line
-If you are Linux/Mac users, you can use **wget/curl** to download data files.
-```
-wget https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/{data_type}_flows/{spatial_scale}/{data_type}_{spatial_scale}_{date}.csv
-```
-
-```
-curl https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/{data_type}_flows/{spatial_scale}/{data_type}_{spatial_scale}_{date}.csv --output output_file.csv
-```
-
-Example:  
-Download daily county level data of March 1st using **wget**.
-```
-wget https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/daily_flows/county2county/daily_county2county_03_01.csv
-```
-
-You can also use the following python codes to download daily patterns and weekly patterns.
-
-#### Download Daily Patterns
-To download daily patterns at different spatial scales, you can use <em>[codes/download_daily_data.py](https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/codes/download_daily_data.py)</em> with the specified date range.  
-Usage:
-    
-```
-    python download_daily_data.py --start_month [start_month] --start_day [start_day] --end_month [end_month] --end_day [end_day] --output_folder [output_folder] --ct --county --state
-```
-
-```
---start_month (required parameter), month of the start date
---start_day (required parameter), day of the start date
---end_month  month of the end date, default is the start_month
---end_day    day of the start date, default is the start_day
---output_folder (required), output folder
---ct download data at the census tract level
---county download data at the county level
---state download data at the state level
-```
-
-Example:  
-Download county level data of March 1st to the <em>daily_flows</em> folder.
-```
-    python download_daily_data.py --start_month 3 --start_day 1 --output_folder daily_flows  --county 
-```
-
-Download state level and census tract level data from March 1st to March 10th to the <em>daily_flows</em> folder.
-```
-    python download_daily_data.py --start_month 3 --start_day 1 --end_month 3 --end_day 10 --output_folder daily_flows --state --ct
-```
-
-#### Download Weekly Patterns
-To download weekly patterns at different spatial scales, you can use <em>[codes/download_weekly_data.py](https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/codes/download_weekly_data.py)</em> with the specified data range.  
-**Please note that the start date and the end date must be Monday.**  
-Usage:
-    
-```
-    python download_weekly_data.py --start_month [start_month] --start_day [start_day] --end_month [end_month] --end_day [end_day] --output_folder [output_folder] --ct --county --state
-```
-
-```
---start_month (required parameter), month of the start date (must be a Monday)
---start_day (required parameter), day of the start date (must be a Monday)
---end_month  month of the end date (must be a Monday), default is the start_month
---end_day    day of the start date (must be a Monday), default is the end_day
---output_folder (required parameter), output folder
---ct download data at the census tract level
---county download data at the county level
---state download data at the state level
-```
-
-Example:  
-Download county level data of the week of March 2nd-8th to the <em>weekly_flows</em> folder.
-```
-    python download_weekly_data.py --start_month 3 --start_day 2 --output_folder weekly_flows  --county 
-```
-
-Download state level and census tract level data from the week of March 2st-8th to the week of March 23th-29th to the <em>weekly_flows</em> folder.
-```
-    python download_weekly_data.py --start_month 3 --start_day 2 --end_month 3 --end_day 23 --output_folder weekly_flows --state --ct
-```
-
-
-#### Combine Files
-Please note that at census tract level, since file sizes are larger than 100 MB, we split them into 20 files.  
-To merge them together conveniently, we provide <em>[codes/merge_files.py](https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/codes/merge_files.py)</em> to combine all files under one folder together.  
-Usage:   
-    
-```
-    python merge_files.py -i [input_folder] -o [output_file_path]
-```
-    
-```
--i input folder path  
--o output file path  
-```
-
-Example:  
-Combine all census tract files under the folder <em>../weekly_flows/ct2ct/04_06</em> to a single file <em>weekly_ct2ct_04_06.csv</em>
-    
-```
-    python merge_files.py -i ../weekly_flows/ct2ct/04_06/ -o weekly_ct2ct_04_06.csv
-```
 
     
 <!-- LICENSE -->
