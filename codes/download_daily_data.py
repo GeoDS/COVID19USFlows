@@ -22,7 +22,7 @@ parser.add_argument('--state', action = 'store_true', help='state2state')
 
 args = parser.parse_args()
 
-start_year = str(args.start_month).zfill(4)
+start_year = str(args.start_year).zfill(4)
 start_month = str(args.start_month).zfill(2)
 start_day = str(args.start_day).zfill(2)
 output_folder = args.output_folder
