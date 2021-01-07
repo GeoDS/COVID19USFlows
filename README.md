@@ -32,6 +32,9 @@
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
 
+## Notice
+**We are updating our repository these 2 days. The repository will be ready in Jan 9, 2021. During this period, some codes might not work and some data might missing.**
+
 <!-- Citation -->
 ## Citation
 If you use this dataset in your research or applications, please cite this source:
