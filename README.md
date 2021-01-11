@@ -18,7 +18,7 @@
 </p>
 
 ## Notice
-**We are updating our repository these 2 days. The repository will be ready in Jan 9, 2021. During this period, some codes might not work and some data might missing.**
+**We are updating our repository. The repository will be ready in Jan 11, 2021. During this period, some codes might not work and some data might missing.**
 
 
 <!-- TABLE OF CONTENTS -->
