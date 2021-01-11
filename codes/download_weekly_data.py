@@ -74,12 +74,7 @@ def download_file(scale, year, month, day, output_folder):
                 
     try:
         if scale == "ct2ct":
-            all_states_fips = ['01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13',
-                               '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25',
-                               '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36',
-                               '37', '38', '39', '40', '41', '42', '44', '45', '46', '47', '48',
-                               '49', '50', '51', '53', '54', '55', '56', '72']
-            for i in all_states_fips:
+            for i in range(20):
                 r = requests.get(url=f"https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/weekly_flows/{scale}/{year}_{month}_{day}/weekly_{scale}_{year}_{month}_{day}_{i}.csv")
                 with open(f"{output_folder}/{scale}/{year}_{month}_{day}/weekly_{scale}_{year}_{month}_{day}_{i}.csv", 'wb') as file:
                     file.write(r.content)
