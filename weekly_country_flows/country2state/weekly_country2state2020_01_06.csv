@@ -1,4 +1,4 @@
-orig_country,dest_state,visitor_flows,state_lng,state_lat,date_range
+geoid_o,geoid_d,visitor_flows,lng_o,lat_d,date_range
 AE,01,7,-86.8445209956579,32.75687994183124,01/06/20 - 01/12/20
 AF,01,12,-86.8445209956579,32.75687994183124,01/06/20 - 01/12/20
 AR,01,4,-86.8445209956579,32.75687994183124,01/06/20 - 01/12/20

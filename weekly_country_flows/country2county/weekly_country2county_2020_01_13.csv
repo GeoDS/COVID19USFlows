@@ -1,4 +1,4 @@
-orig_country,dest_county,visitor_flows,county_lng,county_lat,date_range
+geoid_o,geoid_d,visitor_flows,lng_o,lat_d,date_range
 AE,01097,28,-88.19752954851884,30.685146924673063,01/13/20 - 01/19/20
 AF,01097,4,-88.19752954851884,30.685146924673063,01/13/20 - 01/19/20
 AU,01097,6,-88.19752954851884,30.685146924673063,01/13/20 - 01/19/20

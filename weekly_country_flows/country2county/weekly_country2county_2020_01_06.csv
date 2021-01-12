@@ -1,4 +1,4 @@
-orig_country,dest_county,visitor_flows,county_lng,county_lat,date_range
+geoid_o,geoid_d,visitor_flows,lng_o,lat_d,date_range
 AE,01097,7,-88.19752954851884,30.685146924673063,01/06/20 - 01/12/20
 BR,01097,8,-88.19752954851884,30.685146924673063,01/06/20 - 01/12/20
 CA,01097,16,-88.19752954851884,30.685146924673063,01/06/20 - 01/12/20
