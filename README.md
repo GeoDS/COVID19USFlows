@@ -24,8 +24,8 @@
 * [About the Project](#about-the-project)
 * [Data Processing and Data Descriptor](#data-processing-and-data-descriptor)
 * [How to Download Data?](#code-usage)
-* [Field Descriptions](#field-descriptions)
 * [Folder Structure](#folder-structure)
+* [Field Descriptions](#field-descriptions)
 * [License](#license)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
@@ -240,23 +240,36 @@ project
 |       |   `-- ...
 |       `-- ...
 `-- weekly_flows
-    |-- state2state
-    |   |-- weekly_state2state_2020_03_02.csv
-    |   |-- weekly_state2state_2020_03_09.csv
+|   |-- state2state
+|   |   |-- weekly_state2state_2020_03_02.csv
+|   |   |-- weekly_state2state_2020_03_09.csv
+|   |   `-- ...
+|   |-- county2county
+|   |   |-- weekly_county2county_2020_03_02.csv
+|   |   |-- weekly_county2county_2020_03_09.csv
+|   |   `-- ...
+|   `-- ct2ct
+|       |-- 2020_03_02
+|       |   |-- weekly_ct2ct_2020_03_02_01.csv
+|       |   |-- weekly_ct2ct_2020_03_02_02.csv
+|       |   `-- ...
+|       |-- 2020_03_09
+|       |   |-- weekly_ct2ct_2020_03_09_01.csv
+|       |   |-- weekly_ct2ct_2020_03_09_02.csv
+|       |   `-- ...
+|       `-- ...
+`-- weekly_country_flows
+    |-- country2state
+    |   |-- weekly_country2state_2020_03_02.csv
+    |   |-- weekly_country2state_2020_03_09.csv
     |   `-- ...
-    |-- county2county
+    |-- country2county
     |   |-- weekly_county2county_2020_03_02.csv
     |   |-- weekly_county2county_2020_03_09.csv
     |   `-- ...
-    `-- ct2ct
-        |-- 2020_03_02
-        |   |-- weekly_ct2ct_2020_03_02_01.csv
-        |   |-- weekly_ct2ct_2020_03_02_02.csv
-        |   `-- ...
-        |-- 2020_03_09
-        |   |-- weekly_ct2ct_2020_03_09_01.csv
-        |   |-- weekly_ct2ct_2020_03_09_02.csv
-        |   `-- ...
+    `-- country2ct
+        |-- weekly_county2ct_2020_03_02.csv
+        |-- weekly_county2ct_2020_03_09.csv
         `-- ...
 ```
 
@@ -285,7 +298,15 @@ date - Date of the records. Type: string.
 visitor\_flows - Estimated number of visitors between the two geographic units (from geoid\_o to geoid\_d). Type: float.  
 pop\_flows - Estimated population flows between the two geographic units (from geoid\_o to geoid\_d), inferred from visitor\_flows. Type: float.  
 
-    
+#### Weekly Country Flow Data (folder: weekly_country_flows)
+We provide a new dataset that contains flows from other countries to U.S.    
+geoid\_o - Two-letter country codes of the origin country. Type: string.   
+geoid\_d - Unique identifier of the destination geographic unit in the United States (census tract, county, and state). Type: string.   
+lat\_d - Latitude of the geometric centroid of the destination unit. Type: float.   
+lng\_d - Longitude of the geometric centroid of the destination unit. Type: float.    
+visitor\_flows - Estimated number of visitors detected by SafeGraph between the two geographic units (from geoid\_o to geoid\_d). Type: float.   
+date\_range - Date range of the records. Type: string.  
+
 <!-- LICENSE -->
 ## License
 
@@ -310,6 +331,12 @@ Project Link: [https://github.com/GeoDS/COVID19USFlows](https://github.com/GeoDS
 
 ## Funding
 We would like to thank the funding support provided by the National Science Foundation (Award No. BCS-2027375). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. Support for this research was partly provided by the University of Wisconsin - Madison Office of the Vice Chancellor for Research and Graduate Education with funding from the Wisconsin Alumni Research Foundation.
+
+## Related Work
+* Wang, S., Wei, K., Lin, L. and Li, W., 2020. Spatial-temporal Analysis of COVID-19's Impact on Human Mobility: the Case of the United States. arXiv preprint arXiv:2010.03707. [PDF](https://arxiv.org/pdf/2010.03707)   
+* Liu, J., Singhal, T., Blessing, L.T., Wood, K.L. and Lim, K.H., 2020, December. EPIC30M: An Epidemics Corpus of Over 30 Million Relevant Tweets. In Proceedings of the 2020 IEEE International Conference on Big Data (BigData’20). [PDF](https://people.sutd.edu.sg/~kwanhui_lim/publications/2020-BigData-EPIC30M.pdf)   
+* Beliaev, M., Bıyık, E., Lazar, D.A., Wang, W.Z., Sadigh, D. and Pedarsani, R., 2020. Incentivizing Routing Choices for Safe and Efficient Transportation in the Face of the COVID-19 Pandemic. arXiv preprint arXiv:2012.15749. [PDF](https://arxiv.org/pdf/2012.15749)   
+* Li, Z., Huang, X., Ye, X. and Li, X., 2020. ODT flow explorer: Extract, query, and visualize human mobility. arXiv preprint arXiv:2011.12958. [PDF](https://arxiv.org/pdf/2011.12958)   
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
