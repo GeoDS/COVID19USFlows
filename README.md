@@ -17,10 +17,6 @@
   </p>
 </p>
 
-## Notice
-**We are updating our repository. The repository will be ready in Jan 11, 2021. During this period, some codes might not work and some data might missing.**
-
-
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
@@ -191,7 +187,7 @@ Download state level and census tract level data from the week of March 2st-8th,
 
 
 #### Combine Files
-Please note that at census tract level, since file sizes are larger than 100 MB, we split them into 52 files based on each state, e.g. <em>weekly_ct2ct_2020_03_02_01.csv</em> represents all flows from census tract to census tract at the state Alabama.
+Please note that at census tract level, since file sizes are larger than 100 MB, we split them into 20 files, e.g. <em>weekly_ct2ct_2020_03_02_01.csv</em>.
 To merge them together conveniently, we provide <em>[codes/merge_files.py](https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/codes/merge_files.py)</em> to combine all files under one folder together.  
 Usage:   
     
@@ -217,7 +213,7 @@ The two folders are organized according to the geographic scale, where <em>ct2ct
 All files are stored in a csv format, which has been widely used for storing, transferring, and sharing data in the field of data science.
 File names are formatted as <em>{data_type} \_ {spatial_scale}\_ {date}.csv</em>, e.g. <em>weekly_county2county_2020_03_02.csv</em> and <em>daily_state2state_2020_04_19.csv</em>.
 Specifically, for weekly flow data, the dates in file name refers to the date of the Monday in that week but summarize all mobility flows in that week from Monday to Sunday.
-Since the file size of flow data at census tract level exceeds the GitHub disk limit, each flow data file is split into 52 files based on GEOIDs of states, e.g. <em>weekly_ct2ct_2020_03_02_01.csv</em> represents all flows from census tract to census tract at the state Alabama.
+Since the file size of flow data at census tract level exceeds the GitHub disk limit, each flow data file is split into 20 files, e.g. <em>weekly_ct2ct_2020_03_02_01.csv</em>.
 
 
 The folders and files are organized as follows.   
