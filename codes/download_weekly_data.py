@@ -66,8 +66,8 @@ def download_file(scale, year, month, day, output_folder):
         if os.path.exists(f"{output_folder}/{scale}/") == False:
             os.mkdir(f"{output_folder}/{scale}/")
         if scale == "ct2ct":
-            if os.path.exists(f"{output_folder}/{scale}/{month}_{day}/") == False:
-                os.mkdir(f"{output_folder}/{scale}/{month}_{day}/")
+            if os.path.exists(f"{output_folder}/{scale}/{year}_{month}_{day}/") == False:
+                os.mkdir(f"{output_folder}/{scale}/{year}_{month}_{day}/")
     except Exception as e:
         print(e)
         print("There is no output folder. Please create the output folder first!")               

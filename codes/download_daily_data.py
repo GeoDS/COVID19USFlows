@@ -60,7 +60,7 @@ def download_file(scale, year, month, day, output_folder):
         if scale == "ct2ct":
             for i in range(20):
                 r = requests.get(url=f"https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/daily_flows/{scale}/{year}_{month}_{day}/daily_{scale}_{year}_{month}_{day}_{i}.csv")
-                with open(f"{output_folder}/{scale}/{month}_{day}/daily_{scale}_{month}_{day}_{i}.csv", 'wb') as file:
+                with open(f"{output_folder}/{scale}/{year}_{month}_{day}/daily_{scale}_{year}_{month}_{day}_{i}.csv", 'wb') as file:
                     file.write(r.content)
         else:
             r = requests.get(url=f"https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/daily_flows/{scale}/daily_{scale}_{year}_{month}_{day}.csv")
