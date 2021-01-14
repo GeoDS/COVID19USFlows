@@ -264,12 +264,12 @@ project
     |   |-- weekly_country2state_2020_03_09.csv
     |   `-- ...
     |-- country2county
-    |   |-- weekly_county2county_2020_03_02.csv
-    |   |-- weekly_county2county_2020_03_09.csv
+    |   |-- weekly_country2county_2020_03_02.csv
+    |   |-- weekly_country2county_2020_03_09.csv
     |   `-- ...
     `-- country2ct
-        |-- weekly_county2ct_2020_03_02.csv
-        |-- weekly_county2ct_2020_03_09.csv
+        |-- weekly_country2ct_2020_03_02.csv
+        |-- weekly_country2ct_2020_03_09.csv
         `-- ...
 ```
 
