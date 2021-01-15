@@ -332,13 +332,6 @@ Project Link: [https://github.com/GeoDS/COVID19USFlows](https://github.com/GeoDS
 ## Funding
 We would like to thank the funding support provided by the National Science Foundation (Award No. BCS-2027375). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. Support for this research was partly provided by the University of Wisconsin - Madison Office of the Vice Chancellor for Research and Graduate Education with funding from the Wisconsin Alumni Research Foundation.
 
-## Related Work
-* Wang, S., Wei, K., Lin, L. and Li, W., 2020. Spatial-temporal Analysis of COVID-19's Impact on Human Mobility: the Case of the United States. arXiv preprint arXiv:2010.03707. [PDF](https://arxiv.org/pdf/2010.03707)   
-* Liu, J., Singhal, T., Blessing, L.T., Wood, K.L. and Lim, K.H., 2020, December. EPIC30M: An Epidemics Corpus of Over 30 Million Relevant Tweets. In Proceedings of the 2020 IEEE International Conference on Big Data (BigData’20). [PDF](https://people.sutd.edu.sg/~kwanhui_lim/publications/2020-BigData-EPIC30M.pdf)   
-* Beliaev, M., Bıyık, E., Lazar, D.A., Wang, W.Z., Sadigh, D. and Pedarsani, R., 2020. Incentivizing Routing Choices for Safe and Efficient Transportation in the Face of the COVID-19 Pandemic. arXiv preprint arXiv:2012.15749. [PDF](https://arxiv.org/pdf/2012.15749)   
-* Li, Z., Huang, X., Ye, X. and Li, X., 2020. ODT flow explorer: Extract, query, and visualize human mobility. arXiv preprint arXiv:2011.12958. [PDF](https://arxiv.org/pdf/2011.12958)   
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
 [license-url]: https://github.com/GeoDS/COVID19USFlows/blob/master/LICENSE.txt
