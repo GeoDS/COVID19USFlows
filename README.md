@@ -35,7 +35,7 @@
 If you use this dataset in your research or applications, please cite this source:
 
 
-Kang, Y., Gao, S., Liang, Y.  Li, M., Rao, J. and Kruse, J. Multiscale dynamic human mobility flow dataset in the U.S. during the COVID-19 epidemic. *Scientific Data* 7, 390 (2020). https://www.nature.com/articles/s41597-020-00734-5
+Kang, Y., Gao, S., Liang, Y.  Li, M., Rao, J. and Kruse, J. Multiscale dynamic human mobility flow dataset in the U.S. during the COVID-19 epidemic. *Scientific Data* 7, 390 (2020). [https://www.nature.com/articles/s41597-020-00734-5](https://rdcu.be/cd2Fd)
     
 
 ```
