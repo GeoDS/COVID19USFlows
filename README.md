@@ -17,6 +17,9 @@
   </p>
 </p>
 
+# NOTE
+Our repository is under construction due to the data size limitation. We hope to finalize the dataset and code by July 8, 2021. Apologize for the inconvenience.
+
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
