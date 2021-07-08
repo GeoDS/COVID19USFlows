@@ -102,7 +102,9 @@ A full description of the methodology used for this study can be found here: [ht
 
 <!--code usage-->
 ## Code Usage
+
 **How to Download Data?**
+
 We provide a set of tools for downloading data.  
 
 #### Command Line
@@ -210,7 +212,23 @@ Combine all census tract files under the folder <em>../weekly_flows/ct2ct/2020_0
     python merge_files.py -i ../weekly_flows/ct2ct/2020_04_06/ -o weekly_ct2ct_2020_04_06.csv
 ```
 
-## Folder Structure
+## Dataset Structure
+Due to the data size restriction of GitHub, we have splitted our repository into a set of small data repositories. Each data repository follows the same folder structure but only contains part of the dataset. Here are the details about each repository:   
+
+![COVID19USFlows-WeeklyFlows](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows)
+![COVID19USFlows-WeeklyFlows-Ct2019](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2019)
+![COVID19USFlows-WeeklyFlows-Ct2020](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2020)
+![COVID19USFlows-WeeklyFlows-Ct2021](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2021)
+
+![COVID19USFlows-DailyFlows](https://github.com/GeoDS/COVID19USFlows-DailyFlows)
+![COVID19USFlows-DailyFlows-Ct2019-1](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-1)
+![COVID19USFlows-DailyFlows-Ct2019-2](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-2)
+![COVID19USFlows-DailyFlows-Ct2019-3](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-3)
+![COVID19USFlows-DailyFlows-Ct2020-1](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-1)
+![COVID19USFlows-DailyFlows-Ct2020-2](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-2)
+![COVID19USFlows-DailyFlows-Ct2020-3](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-3)
+![COVID19USFlows-DailyFlows-Ct2021](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2021)
+
 Data provided in this repository are separated into two folders <em>daily_flows</em> and <em>weekly_flows</em> to store daily flow data and weekly flow data.
 The two folders are organized according to the geographic scale, where <em>ct2ct</em> indicates flows between census tract to census tract, <em>county2county</em> refers to flows between county to county, and <em>state2state</em> contains flow data originate from one state to others.
 All files are stored in a csv format, which has been widely used for storing, transferring, and sharing data in the field of data science.
