@@ -216,7 +216,7 @@ Combine all census tract files under the folder <em>../weekly_flows/ct2ct/2020_0
 Due to the data size restriction of GitHub, we have splitted our repository into a set of small data repositories. Each data repository follows the same folder structure but only contains part of the dataset. Here are the details about each repository:   
 
 | Data Repository | Data Type | Scale | Time Range |
-| --- | ----------- |
+| --- | ----------- | --- | ----------- | --- |
 |[COVID19USFlows-WeeklyFlows](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows)|weekly data|state, county|2019-2021|  
 |[COVID19USFlows-WeeklyFlows-Ct2019](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2019)|weekly data|census tract|2019|  
 |[COVID19USFlows-WeeklyFlows-Ct2020](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2020)|weekly data|census tract|2019|  
