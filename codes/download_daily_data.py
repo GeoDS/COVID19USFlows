@@ -59,11 +59,27 @@ def download_file(scale, year, month, day, output_folder):
     try:
         if scale == "ct2ct":
             for i in range(20):
-                r = requests.get(url=f"https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/daily_flows/{scale}/{year}_{month}_{day}/daily_{scale}_{year}_{month}_{day}_{i}.csv")
+                if year == "2019":
+                    if (month == "01") or (month == "02") or (month == "03") or (month == "04"):
+                        repo = "DailyFlows-Ct2019-1"
+                    elif (month == "05") or (month == "06") or (month == "07") or (month == "08"):
+                        repo = "DailyFlows-Ct2019-2"
+                    elif (month == "09") or (month == "10") or (month == "11") or (month == "12"):
+                        repo = "DailyFlows-Ct2019-3"
+                elif year == "2020":
+                    if (month == "01") or (month == "02") or (month == "03") or (month == "04"):
+                        repo = "DailyFlows-Ct2020-1"
+                    elif (month == "05") or (month == "06") or (month == "07") or (month == "08"):
+                        repo = "DailyFlows-Ct2020-2"
+                    elif (month == "09") or (month == "10") or (month == "11") or (month == "12"):
+                        repo = "DailyFlows-Ct2020-3"
+                elif year == "2021":
+                        repo = "DailyFlows-Ct2021"
+                r = requests.get(url=f"https://raw.githubusercontent.com/GeoDS/COVID19USFlows-{repo}/master/daily_flows/{scale}/{year}_{month}_{day}/daily_{scale}_{year}_{month}_{day}_{i}.csv")
                 with open(f"{output_folder}/{scale}/{year}_{month}_{day}/daily_{scale}_{year}_{month}_{day}_{i}.csv", 'wb') as file:
                     file.write(r.content)
         else:
-            r = requests.get(url=f"https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/daily_flows/{scale}/daily_{scale}_{year}_{month}_{day}.csv")
+            r = requests.get(url=f"https://raw.githubusercontent.com/GeoDS/COVID19USFlows-DailyFlows/master/daily_flows/{scale}/daily_{scale}_{year}_{month}_{day}.csv")
             with open(f"{output_folder}/{scale}/daily_{scale}_{year}_{month}_{day}.csv", 'wb') as file:
                 file.write(r.content)
         return True

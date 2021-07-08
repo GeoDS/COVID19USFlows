@@ -75,11 +75,17 @@ def download_file(scale, year, month, day, output_folder):
     try:
         if scale == "ct2ct":
             for i in range(20):
-                r = requests.get(url=f"https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/weekly_flows/{scale}/{year}_{month}_{day}/weekly_{scale}_{year}_{month}_{day}_{i}.csv")
+                if year == "2019":
+                    repo = "WeeklyFlows-Ct2019"
+                elif year == "2020":
+                    repo = "WeeklyFlows-Ct2020"
+                elif year == "2021":
+                    repo = "WeeklyFlows-Ct2021"
+                r = requests.get(url=f"https://raw.githubusercontent.com/GeoDS/COVID19USFlows-{repo}/master/weekly_flows/{scale}/{year}_{month}_{day}/weekly_{scale}_{year}_{month}_{day}_{i}.csv")
                 with open(f"{output_folder}/{scale}/{year}_{month}_{day}/weekly_{scale}_{year}_{month}_{day}_{i}.csv", 'wb') as file:
                     file.write(r.content)
         else:
-            r = requests.get(url=f"https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/weekly_flows/{scale}/weekly_{scale}_{year}_{month}_{day}.csv")
+            r = requests.get(url=f"https://raw.githubusercontent.com/GeoDS/COVID19USFlows-WeeklyFlows/master/weekly_flows/{scale}/weekly_{scale}_{year}_{month}_{day}.csv")
             with open(f"{output_folder}/{scale}/weekly_{scale}_{year}_{month}_{day}.csv", 'wb') as file:
                 file.write(r.content)
         return True
