@@ -17,17 +17,14 @@
   </p>
 </p>
 
-# NOTE
-Our repository is under construction due to the data size limitation. We hope to finalize the dataset and code by July 8, 2021. Apologize for the inconvenience.
-
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
 * [Citation](#citation)
 * [About the Project](#about-the-project)
 * [Data Processing and Data Descriptor](#data-processing-and-data-descriptor)
-* [How to Download Data?](#code-usage)
 * [Dataset Structure](#dataset-structure)
+* [How to Download Data?](#code-usage)
 * [Field Descriptions](#field-descriptions)
 * [License](#license)
 * [Contact](#contact)
@@ -100,6 +97,91 @@ Temporal patterns of mobility flows in five metropolitan areas (just as examples
 
 A full description of the methodology used for this study can be found here: [https://arxiv.org/abs/2008.12238](https://arxiv.org/abs/2008.12238).
 
+<!-- Dataset Structure -->
+## Dataset Structure
+Due to the data size restriction of GitHub, we have splitted our repository into a set of small data repositories. Each data repository follows the same folder structure but only contains part of the dataset. Here are the details about each repository:   
+
+| Data Repository | Data Type | Scale | Time Range |   
+| --- | ----------- | --- | ----------- |   
+|[COVID19USFlows-WeeklyFlows](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows)|weekly data|state, county|2019-2021|  
+|[COVID19USFlows-WeeklyFlows-Ct2019](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2019)|weekly data|census tract|2019|  
+|[COVID19USFlows-WeeklyFlows-Ct2020](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2020)|weekly data|census tract|2020|  
+|[COVID19USFlows-WeeklyFlows-Ct2021](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2021)|weekly data|census tract|2021|  
+|[COVID19USFlows-DailyFlows](https://github.com/GeoDS/COVID19USFlows-DailyFlows)|daily data|state, county|2019-2021|  
+|[COVID19USFlows-DailyFlows-Ct2019-1](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-1)|daily data|census tract|01/2019-04/2019|  
+|[COVID19USFlows-DailyFlows-Ct2019-2](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-2)|daily data|census tract|05/2019-08/2019|  
+|[COVID19USFlows-DailyFlows-Ct2019-3](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-3)|daily data|census tract|09/2019-12/2019|  
+|[COVID19USFlows-DailyFlows-Ct2020-1](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-1)|daily data|census tract|01/2020-04/2020|  
+|[COVID19USFlows-DailyFlows-Ct2020-2](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-2)|daily data|census tract|05/2020-08/2020|  
+|[COVID19USFlows-DailyFlows-Ct2020-3](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-3)|daily data|census tract|09/2020-12/2020|  
+|[COVID19USFlows-DailyFlows-Ct2021](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2021)|daily data|census tract|01/2021-04/2021|  
+
+Data provided in this repository are separated into two folders <em>daily_flows</em> and <em>weekly_flows</em> to store daily flow data and weekly flow data.
+The two folders are organized according to the geographic scale, where <em>ct2ct</em> indicates flows between census tract to census tract, <em>county2county</em> refers to flows between county to county, and <em>state2state</em> contains flow data originate from one state to others.
+All files are stored in a csv format, which has been widely used for storing, transferring, and sharing data in the field of data science.
+File names are formatted as <em>{data_type} \_ {spatial_scale}\_ {date}.csv</em>, e.g. <em>weekly_county2county_2020_03_02.csv</em> and <em>daily_state2state_2020_04_19.csv</em>.
+Specifically, for weekly flow data, the dates in file name refers to the date of the Monday in that week but summarize all mobility flows in that week from Monday to Sunday.
+Since the file size of flow data at census tract level exceeds the GitHub disk limit, each flow data file is split into 20 files, e.g. <em>weekly_ct2ct_2020_03_02_01.csv</em>.
+
+
+The folders and files are organized as follows.   
+```
+project
+|-- codes
+|-- daily_flows
+|   |-- state2state
+|   |   |-- daily_state2state_2020_03_01.csv
+|   |   |-- daily_state2state_2020_03_02.csv
+|   |   `-- ...
+|   |-- county2county
+|   |   |-- daily_county2county_2020_03_01.csv
+|   |   |-- daily_county2county_2020_03_02.csv
+|   |   `-- ...
+|   `-- ct2ct
+|       |-- 2020_03_01
+|       |   |-- daily_ct2ct_2020_03_01_01.csv
+|       |   |-- daily_ct2ct_2020_03_01_02.csv
+|       |   `-- ...
+|       |-- 2020_03_02
+|       |   |-- daily_ct2ct_2020_03_02_01.csv
+|       |   |-- daily_ct2ct_2020_03_02_02.csv
+|       |   `-- ...
+|       `-- ...
+`-- weekly_flows
+|   |-- state2state
+|   |   |-- weekly_state2state_2020_03_02.csv
+|   |   |-- weekly_state2state_2020_03_09.csv
+|   |   `-- ...
+|   |-- county2county
+|   |   |-- weekly_county2county_2020_03_02.csv
+|   |   |-- weekly_county2county_2020_03_09.csv
+|   |   `-- ...
+|   `-- ct2ct
+|       |-- 2020_03_02
+|       |   |-- weekly_ct2ct_2020_03_02_01.csv
+|       |   |-- weekly_ct2ct_2020_03_02_02.csv
+|       |   `-- ...
+|       |-- 2020_03_09
+|       |   |-- weekly_ct2ct_2020_03_09_01.csv
+|       |   |-- weekly_ct2ct_2020_03_09_02.csv
+|       |   `-- ...
+|       `-- ...
+`-- weekly_country_flows
+    |-- country2state
+    |   |-- weekly_country2state_2020_03_02.csv
+    |   |-- weekly_country2state_2020_03_09.csv
+    |   `-- ...
+    |-- country2county
+    |   |-- weekly_country2county_2020_03_02.csv
+    |   |-- weekly_country2county_2020_03_09.csv
+    |   `-- ...
+    `-- country2ct
+        |-- weekly_country2ct_2020_03_02.csv
+        |-- weekly_country2ct_2020_03_09.csv
+        `-- ...
+```
+
+
 <!--code usage-->
 ## Code Usage
 
@@ -110,17 +192,17 @@ We provide a set of tools for downloading data.
 #### Command Line
 If you are Linux/Mac users, you can use **wget/curl** to download data files.
 ```
-wget https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/{data_type}_flows/{spatial_scale}/{data_type}_{spatial_scale}_{date}.csv
+wget https://raw.githubusercontent.com/GeoDS/COVID19USFlows{repo_url}/master/{data_type}_flows/{spatial_scale}/{data_type}_{spatial_scale}_{date}.csv
 ```
 
 ```
-curl https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/{data_type}_flows/{spatial_scale}/{data_type}_{spatial_scale}_{date}.csv --output output_file.csv
+curl https://raw.githubusercontent.com/GeoDS/COVID19USFlows{repo_url}/master/{data_type}_flows/{spatial_scale}/{data_type}_{spatial_scale}_{date}.csv --output output_file.csv
 ```
 
 Example:  
 Download daily county level data of March 1st, 2020 using **wget**.
 ```
-wget https://raw.githubusercontent.com/GeoDS/COVID19USFlows/master/daily_flows/county2county/daily_county2county_2020_03_01.csv
+wget https://raw.githubusercontent.com/GeoDS/COVID19USFlows-DailyFlows/master/daily_flows/county2county/daily_county2county_2020_03_01.csv
 ```
 
 You can also use the following python codes to download daily patterns and weekly patterns.
@@ -210,89 +292,6 @@ Combine all census tract files under the folder <em>../weekly_flows/ct2ct/2020_0
     
 ```
     python merge_files.py -i ../weekly_flows/ct2ct/2020_04_06/ -o weekly_ct2ct_2020_04_06.csv
-```
-
-## Dataset Structure
-Due to the data size restriction of GitHub, we have splitted our repository into a set of small data repositories. Each data repository follows the same folder structure but only contains part of the dataset. Here are the details about each repository:   
-
-| Data Repository | Data Type | Scale | Time Range |   
-| --- | ----------- | --- | ----------- |   
-|[COVID19USFlows-WeeklyFlows](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows)|weekly data|state, county|2019-2021|  
-|[COVID19USFlows-WeeklyFlows-Ct2019](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2019)|weekly data|census tract|2019|  
-|[COVID19USFlows-WeeklyFlows-Ct2020](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2020)|weekly data|census tract|2020|  
-|[COVID19USFlows-WeeklyFlows-Ct2021](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2021)|weekly data|census tract|2021|  
-|[COVID19USFlows-DailyFlows](https://github.com/GeoDS/COVID19USFlows-DailyFlows)|daily data|state, county|2019-2021|  
-|[COVID19USFlows-DailyFlows-Ct2019-1](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-1)|daily data|census tract|01/2019-04/2019|  
-|[COVID19USFlows-DailyFlows-Ct2019-2](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-2)|daily data|census tract|05/2019-08/2019|  
-|[COVID19USFlows-DailyFlows-Ct2019-3](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-3)|daily data|census tract|09/2019-12/2019|  
-|[COVID19USFlows-DailyFlows-Ct2020-1](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-1)|daily data|census tract|01/2020-04/2020|  
-|[COVID19USFlows-DailyFlows-Ct2020-2](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-2)|daily data|census tract|05/2020-08/2020|  
-|[COVID19USFlows-DailyFlows-Ct2020-3](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-3)|daily data|census tract|09/2020-12/2020|  
-|[COVID19USFlows-DailyFlows-Ct2021](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2021)|daily data|census tract|01/2021-04/2021|  
-
-Data provided in this repository are separated into two folders <em>daily_flows</em> and <em>weekly_flows</em> to store daily flow data and weekly flow data.
-The two folders are organized according to the geographic scale, where <em>ct2ct</em> indicates flows between census tract to census tract, <em>county2county</em> refers to flows between county to county, and <em>state2state</em> contains flow data originate from one state to others.
-All files are stored in a csv format, which has been widely used for storing, transferring, and sharing data in the field of data science.
-File names are formatted as <em>{data_type} \_ {spatial_scale}\_ {date}.csv</em>, e.g. <em>weekly_county2county_2020_03_02.csv</em> and <em>daily_state2state_2020_04_19.csv</em>.
-Specifically, for weekly flow data, the dates in file name refers to the date of the Monday in that week but summarize all mobility flows in that week from Monday to Sunday.
-Since the file size of flow data at census tract level exceeds the GitHub disk limit, each flow data file is split into 20 files, e.g. <em>weekly_ct2ct_2020_03_02_01.csv</em>.
-
-
-The folders and files are organized as follows.   
-```
-project
-|-- codes
-|-- daily_flows
-|   |-- state2state
-|   |   |-- daily_state2state_2020_03_01.csv
-|   |   |-- daily_state2state_2020_03_02.csv
-|   |   `-- ...
-|   |-- county2county
-|   |   |-- daily_county2county_2020_03_01.csv
-|   |   |-- daily_county2county_2020_03_02.csv
-|   |   `-- ...
-|   `-- ct2ct
-|       |-- 2020_03_01
-|       |   |-- daily_ct2ct_2020_03_01_01.csv
-|       |   |-- daily_ct2ct_2020_03_01_02.csv
-|       |   `-- ...
-|       |-- 2020_03_02
-|       |   |-- daily_ct2ct_2020_03_02_01.csv
-|       |   |-- daily_ct2ct_2020_03_02_02.csv
-|       |   `-- ...
-|       `-- ...
-`-- weekly_flows
-|   |-- state2state
-|   |   |-- weekly_state2state_2020_03_02.csv
-|   |   |-- weekly_state2state_2020_03_09.csv
-|   |   `-- ...
-|   |-- county2county
-|   |   |-- weekly_county2county_2020_03_02.csv
-|   |   |-- weekly_county2county_2020_03_09.csv
-|   |   `-- ...
-|   `-- ct2ct
-|       |-- 2020_03_02
-|       |   |-- weekly_ct2ct_2020_03_02_01.csv
-|       |   |-- weekly_ct2ct_2020_03_02_02.csv
-|       |   `-- ...
-|       |-- 2020_03_09
-|       |   |-- weekly_ct2ct_2020_03_09_01.csv
-|       |   |-- weekly_ct2ct_2020_03_09_02.csv
-|       |   `-- ...
-|       `-- ...
-`-- weekly_country_flows
-    |-- country2state
-    |   |-- weekly_country2state_2020_03_02.csv
-    |   |-- weekly_country2state_2020_03_09.csv
-    |   `-- ...
-    |-- country2county
-    |   |-- weekly_country2county_2020_03_02.csv
-    |   |-- weekly_country2county_2020_03_09.csv
-    |   `-- ...
-    `-- country2ct
-        |-- weekly_country2ct_2020_03_02.csv
-        |-- weekly_country2ct_2020_03_09.csv
-        `-- ...
 ```
 
 ## Field Descriptions
