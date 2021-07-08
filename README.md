@@ -219,16 +219,16 @@ Due to the data size restriction of GitHub, we have splitted our repository into
 | --- | ----------- | --- | ----------- |   
 |[COVID19USFlows-WeeklyFlows](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows)|weekly data|state, county|2019-2021|  
 |[COVID19USFlows-WeeklyFlows-Ct2019](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2019)|weekly data|census tract|2019|  
-|[COVID19USFlows-WeeklyFlows-Ct2020](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2020)|weekly data|census tract|2019|  
-|[COVID19USFlows-WeeklyFlows-Ct2021](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2021)|weekly data|census tract|2019|  
-|[COVID19USFlows-DailyFlows](https://github.com/GeoDS/COVID19USFlows-DailyFlows)|daily data|census tract|2019|  
-|[COVID19USFlows-DailyFlows-Ct2019-1](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-1)|daily data|census tract|2019|  
-|[COVID19USFlows-DailyFlows-Ct2019-2](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-2)|daily data|census tract|2019|  
-|[COVID19USFlows-DailyFlows-Ct2019-3](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-3)|daily data|census tract|2019|  
-|[COVID19USFlows-DailyFlows-Ct2020-1](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-1)|daily data|census tract|2019|  
-|[COVID19USFlows-DailyFlows-Ct2020-2](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-2)|daily data|census tract|2019|  
-|[COVID19USFlows-DailyFlows-Ct2020-3](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-3)|daily data|census tract|2019|  
-|[COVID19USFlows-DailyFlows-Ct2021](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2021)|daily data|census tract|2019|  
+|[COVID19USFlows-WeeklyFlows-Ct2020](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2020)|weekly data|census tract|2020|  
+|[COVID19USFlows-WeeklyFlows-Ct2021](https://github.com/GeoDS/COVID19USFlows-WeeklyFlows-Ct2021)|weekly data|census tract|2021|  
+|[COVID19USFlows-DailyFlows](https://github.com/GeoDS/COVID19USFlows-DailyFlows)|daily data|state, county|2019-2021|  
+|[COVID19USFlows-DailyFlows-Ct2019-1](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-1)|daily data|census tract|01/2019-04/2019|  
+|[COVID19USFlows-DailyFlows-Ct2019-2](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-2)|daily data|census tract|05/2019-08/2019|  
+|[COVID19USFlows-DailyFlows-Ct2019-3](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2019-3)|daily data|census tract|09/2019-12/2019|  
+|[COVID19USFlows-DailyFlows-Ct2020-1](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-1)|daily data|census tract|01/2020-04/2020|  
+|[COVID19USFlows-DailyFlows-Ct2020-2](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-2)|daily data|census tract|05/2020-08/2020|  
+|[COVID19USFlows-DailyFlows-Ct2020-3](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2020-3)|daily data|census tract|09/2020-12/2020|  
+|[COVID19USFlows-DailyFlows-Ct2021](https://github.com/GeoDS/COVID19USFlows-DailyFlows-Ct2021)|daily data|census tract|01/2021-04/2021|  
 
 Data provided in this repository are separated into two folders <em>daily_flows</em> and <em>weekly_flows</em> to store daily flow data and weekly flow data.
 The two folders are organized according to the geographic scale, where <em>ct2ct</em> indicates flows between census tract to census tract, <em>county2county</em> refers to flows between county to county, and <em>state2state</em> contains flow data originate from one state to others.
